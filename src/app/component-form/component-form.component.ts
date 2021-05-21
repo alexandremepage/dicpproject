@@ -18,7 +18,7 @@ export class ComponentFormComponent implements OnInit {
 
   booSubmit = false;
 
-  patternTahitiNumber = "/T[a-zA-Z0-9][0-9]{0,4}/";
+  patternTahitiNumber = "T[a-zA-Z0-9][0-9]{4}";
 
   questions = [
     {id: "justificatif", name: "Justificatif DICP"},
@@ -90,39 +90,24 @@ export class ComponentFormComponent implements OnInit {
   }
 
   submit() {
-    console.log("Form Submitted");
+    
     this.booSubmit = true;
 
-    this.postServ.create(this.dcipForm.value).subscribe(
-      data => console.log("success", data),
-      error => console.error("error", error)
-    );
+    console.log("form valid",this.dcipForm.valid)
+    console.log("form valid",this.dcipForm)
+    //if (this.dcipForm.valid) {
 
-    /*const headers = { 'content-type': 'application/json'}  
-    const body=JSON.stringify(this.dcipForm.value);
-    console.log(body)
-    return this.httpClient.post(
-      this.API, 
-      body,
-      {'headers':headers}
-    
-    ).subscribe((response : any)=>{
-      console.log(response);//On success response
-    },(errorResponse : any)=>{
-      console.log(errorResponse);//On unsuccessful response
-    });*/
-
-    /*this.httpClient.post(this.API, 
-      this.dcipForm.value,
-      {
-        headers : new HttpHeaders().set("Content-Type","application/json")
-      }
+      console.log("Form Submitted");
       
-    ).subscribe((response : any)=>{
-      console.log(response);//On success response
-    },(errorResponse : any)=>{
-      console.log(errorResponse);//On unsuccessful response
-    });*/
+      this.postServ.create(this.dcipForm.value).subscribe(
+        data => console.log("success", data),
+        error => console.error("error", error)
+      );
+
+      this.onReset();
+    /*} else {
+      console.log("Form not submitted");
+    }*/
 
   }
 
