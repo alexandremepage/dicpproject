@@ -10,15 +10,20 @@ Le projet a été réalisé à l'aide du framework [Angular CLI](https://github.
 3) Back-End: Node.js
 4) SMTP Mail: https://mailtrap.io
 
+# PLANNING
+
+Temps passé:
+1) Mardi 18/05/2021 début d'après midi: documentation sur Angular et AngularJS, début développement du formulaire avec AngularJS
+
+2) Mercredi 19/05/2021: suite à des questions posées à Matthieu BOSC, confusion entre Angular et AngularJS, déplacement du formulaire sur Angular, pour utiliser Node.js
+
+3) Jeudi 20/05/2021: fin du formulaire, codage de l'API pour poster les données sur un serveur, stockage des données reçues par le serveur sur une base de données
+
+4)Vendredi 21/05/2021 fin de matinée: réalisation de l'envoi de mail via le serveur suite à la réception de la requête, via un fake mail
+
 # SOMMAIRE
 
 Au niveau des tâches réalisées: parti initialement sur AngularJS, je me suis rabattu sur Angular avec Node.js
-
-Temps passé:
--Mardi 18/05/2021 début d'après midi: documentation sur Angular et AngularJS, début développement du formulaire avec AngularJS
--Mercredi 19/05/2021: suite à des questions posées à Matthieu BOSC, confusion entre Angular et AngularJS, déplacement du formulaire sur Angular, pour utiliser Node.js
--Jeudi 20/05/2021: fin du formulaire, codage de l'API pour poster les données sur un serveur, stockage des données reçues par le serveur sur une base de données
--Vendredi 21/05/2021 fin de matinée: réalisation de l'envoi de mail via le serveur suite à la réception de la requête, via un fake mail
 
 1) Le formulaire
   -Choix des questions et affichage conditionnel en fonction de la question choisie
