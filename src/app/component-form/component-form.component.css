@@ -1,0 +1,24 @@
+.mainContainer {
+	display:flex;
+	flex-direction:column;
+}
+
+.rowElement {
+	display:flex;
+	flex-direction:row;
+	padding:5px;
+}
+
+.subRowLabel {
+	display:inline-block;
+	width:200px;
+}
+
+.subRowInput {
+	display:inline-block;
+}
+
+.errorMessage {
+	background-color: lightcoral;
+	color: red;
+}

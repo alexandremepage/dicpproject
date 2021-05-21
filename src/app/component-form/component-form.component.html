@@ -1,0 +1,88 @@
+<div class="mainContainer">
+    <h1>Formulaire</h1>
+    <form [formGroup] = "dcipForm" (ngSubmit)="submit()">
+        <div class="rowElement">
+            <div class="subRowLabel">
+            </div>
+            <div class="subRowInput">
+                <select formControlName="selectQuestion" name="selectQuestion" >
+                    <option [ngValue]="null" disabled>Votre question:</option>
+                    <option *ngFor="let question of questions" [ngValue]="question.id">{{question.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div *ngIf="getSelVal() == 'contentious' || getSelVal() == 'declaration'" class="rowElement">
+			<div class="subRowLabel">
+				<label>email</label>
+			</div>
+			<div class="subRowInput">
+				<input type="text" formControlName ="userEmail" name="userEmail" required email>
+			</div>           
+		</div>
+        <div *ngIf="getSelVal() == 'contentious' || getSelVal() == 'declaration'">
+            <div *ngIf="booSubmit && emailRequired()" class="errorMessage">
+                L'email est requis. 
+            </div>
+            <div *ngIf="booSubmit && dcipForm.controls.userEmail.errors?.email" class="errorMessage">
+                L'email est invalide. 
+            </div>
+        </div>
+		<div *ngIf="getSelVal() == 'justificatif' 
+        || getSelVal() == 'contentious' 
+        || getSelVal() == 'declaration'" class="rowElement">
+			<div class="subRowLabel">
+				<label>Numéro TAHITI</label>
+			</div>
+			<div class="subRowInput">
+				<input type='text' formControlName="tahitiNumber" name='tahitiNumber' required [pattern]="patternTahitiNumber">
+			</div>           
+		</div>
+        <div *ngIf="getSelVal() == 'justificatif' 
+        || getSelVal() == 'contentious' 
+        || getSelVal() == 'declaration'">
+            <div *ngIf="booSubmit && tahitiNumberRequired()" class="errorMessage">
+                Le numéro Tahiti est requis.
+            </div>
+            <div *ngIf="booSubmit && tahitiNumberInvalid()" class="errorMessage">
+                Le numéro doit commencer par un T, suivi d'un caractère alpha-numérique, suivi de caractères numériques, la taille attendue est 6. 
+            </div>
+        </div>
+		<div *ngIf="getSelVal() == 'contentious' || getSelVal() == 'declaration'" class="rowElement">
+			<div class="subRowLabel">
+				<label>Impôt concerné</label>
+			</div>
+			<div class="subRowInput">
+				<select name="impot" ng-model="impot">
+					<option value="">IS</option>
+				</select>
+			</div>
+		</div>
+		<div *ngIf="getSelVal() == 'contentious'" class="rowElement">
+			<div class="subRowLabel">
+				<label>Remarques</label>
+			</div>
+			<div class="subRowInput">
+				<input type='textarea' formControlName="commentary" name="commentary" required>
+			</div>           
+		</div>
+        <div *ngIf="getSelVal() == 'contentious' && booSubmit && commentaryRequired()" class="errorMessage">
+            Merci de renseigner un commentaire en Remarques. 
+        </div>
+		<div *ngIf="getSelVal() == 'declaration'" class="rowElement">
+			<div class="subRowLabel">
+				<label>Votre déclaration</label>
+			</div>
+			<div class="subRowInput">
+				<input type="file" formControlName="fileDeclaration" name="fileDeclaration" required>
+			</div>
+		</div>
+        <div *ngIf="getSelVal() == 'declaration' && booSubmit && fileDeclarationRequired()" class="errorMessage">
+            Merci de fournir le fichier de déclaration. 
+        </div>     
+		<div *ngIf="getSelVal() == 'justificatif' 
+        || getSelVal() == 'contentious' 
+        || getSelVal() == 'declaration'" class="rowElement">
+			<button type="submit">Submit</button>
+		</div>
+	</form>
+</div>
