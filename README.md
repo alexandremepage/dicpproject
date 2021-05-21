@@ -19,6 +19,7 @@ Au niveau des tâches réalisées: parti initialement sur AngularJS, je me suis 
 
 ## Development server
 
-Lancer 'ng serve' pour le serveur à la racine du répertoire DICPPROJECT, et se rendre sur `http://localhost:4200/`.
-Via un terminal, se placer à la racine du répertoire DICPPROJECT/server, et taper la commande node server. Une indication 'serveur runing in 3000' indique que le serveur
+-Lancer un terminal à la racine du répertoire DICPPROJECT, et lancer 'ng serve' pour le serveur, et se rendre sur `http://localhost:4200/`.
+-Via un terminal, se placer à la racine du répertoire DICPPROJECT/server, et taper la commande node server. Une indication 'serveur runing in 3000' indique que le serveur
 est bien démarré et peut recevoir des requêtes HTTP.
+-Installer MySQL pour Windows
