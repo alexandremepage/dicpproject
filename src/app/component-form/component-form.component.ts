@@ -28,9 +28,9 @@ export class ComponentFormComponent implements OnInit {
 
   dcipForm = this.formBuilder.group({ 
     selectQuestion: null,
-    userEmail: ['', Validators.required, Validators.email],
-    tahitiNumber: ['', [Validators.required, Validators.pattern(this.patternTahitiNumber)]],
-    commentary: ['', Validators.required],
+    userEmail: '',
+    tahitiNumber: '',
+    commentary: '',
     fileDeclaration: ''
   });
 
@@ -71,7 +71,6 @@ export class ComponentFormComponent implements OnInit {
   
   tahitiNumberInvalid() {
     const tahitiNumber = this.dcipForm.controls.tahitiNumber;
-    console.log("patt",tahitiNumber.hasError('pattern'))
     return tahitiNumber.hasError('pattern');
   }
 
@@ -93,9 +92,7 @@ export class ComponentFormComponent implements OnInit {
     
     this.booSubmit = true;
 
-    console.log("form valid",this.dcipForm.valid)
-    console.log("form valid",this.dcipForm)
-    //if (this.dcipForm.valid) {
+    if (this.dcipForm.valid) {
 
       console.log("Form Submitted");
       
@@ -105,16 +102,24 @@ export class ComponentFormComponent implements OnInit {
       );
 
       this.onReset();
-    /*} else {
+    } else {
       console.log("Form not submitted");
-    }*/
-
+    }
   }
 
   onReset() {
     this.booSubmit = false;
     this.dcipForm.reset();
   }
-
+  public findInvalidControls() {
+    const invalid = [];
+    const controls = this.dcipForm.controls;
+    for (const name in controls) {
+        if (controls[name].invalid) {
+            invalid.push(name);
+        }
+    }
+    return invalid;
+}
 
 }

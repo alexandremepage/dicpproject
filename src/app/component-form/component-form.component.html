@@ -5,7 +5,7 @@
             <div class="subRowLabel">
             </div>
             <div class="subRowInput">
-                <select formControlName="selectQuestion" name="selectQuestion" >
+                <select formControlName="selectQuestion" name="selectQuestion">
                     <option [ngValue]="null" disabled>Votre question:</option>
                     <option *ngFor="let question of questions" [ngValue]="question.id">{{question.name}}</option>
                 </select>
@@ -34,7 +34,7 @@
 				<label>Numéro TAHITI</label>
 			</div>
 			<div class="subRowInput">
-				<input type='text' formControlName="tahitiNumber" name='tahitiNumber' required>
+				<input type='text' formControlName="tahitiNumber" name='tahitiNumber' required [pattern]='patternTahitiNumber'>
 			</div>           
 		</div>
         <div *ngIf="getSelVal() == 'justificatif' 
@@ -84,5 +84,8 @@
         || getSelVal() == 'declaration'" class="rowElement">
 			<button type="submit">Envoyer</button>
 		</div>
+        <div>
+            {{findInvalidControls()}}
+        </div>
 	</form>
 </div>
