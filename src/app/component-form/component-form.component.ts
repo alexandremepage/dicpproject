@@ -11,7 +11,7 @@ import { PostService } from '../services/post.service';
 })
 export class ComponentFormComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private postServ: PostService) { }
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private postService: PostService) { }
 
   SERVER_URL = "http://localhost:4200/";
   API= "http://localhost:3000/api/";
@@ -88,7 +88,7 @@ export class ComponentFormComponent implements OnInit {
 
   }
 
-  submit() {
+  onSubmit() {
     
     this.booSubmit = true;
 
@@ -96,7 +96,7 @@ export class ComponentFormComponent implements OnInit {
 
       console.log("Form Submitted");
       
-      this.postServ.create(this.dcipForm.value).subscribe(
+      this.postService.create(this.dcipForm.value).subscribe(
         data => console.log("success", data),
         error => console.error("error", error)
       );
@@ -106,11 +106,37 @@ export class ComponentFormComponent implements OnInit {
       console.log("Form not submitted");
     }
   }
+  selectedValue = null;
+
+  onChange(event: any) {
+    var objNewVal = event.target.value;
+    var objOldVal = this.selectedValue;
+
+    if (objOldVal != objNewVal) {
+      this.selectedValue = objNewVal;
+     
+      if (objOldVal != null) {       
+        this.setInvalidControlsToNull();
+        this.dcipForm.updateValueAndValidity();
+        //this.dcipForm.controls.tahitiNumber.setValidators([Validators.required]);
+        //this.dcipForm.updateValueAndValidity();
+        this.booSubmit = false;
+      }
+    }
+  }
 
   onReset() {
     this.booSubmit = false;
     this.dcipForm.reset();
   }
+
+  public setInvalidControlsToNull() {
+    const controls = this.dcipForm.controls;
+    for (const name in controls) {
+      controls[name].setErrors(null);
+    }
+  }
+
   public findInvalidControls() {
     const invalid = [];
     const controls = this.dcipForm.controls;
@@ -120,6 +146,6 @@ export class ComponentFormComponent implements OnInit {
         }
     }
     return invalid;
-}
+  }
 
 }

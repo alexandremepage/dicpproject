@@ -1,11 +1,11 @@
 <div class="mainContainer">
     <h1>Accueil</h1>
-    <form [formGroup] = "dcipForm" (ngSubmit)="submit()">
+    <form [formGroup] = "dcipForm" (ngSubmit)="onSubmit()">
         <div class="rowElement">
             <div class="subRowLabel">
             </div>
             <div class="subRowInput">
-                <select formControlName="selectQuestion" name="selectQuestion">
+                <select formControlName="selectQuestion" name="selectQuestion" (change)="onChange($event)">
                     <option [ngValue]="null" disabled>Votre question:</option>
                     <option *ngFor="let question of questions" [ngValue]="question.id">{{question.name}}</option>
                 </select>
@@ -84,8 +84,5 @@
         || getSelVal() == 'declaration'" class="rowElement">
 			<button type="submit">Envoyer</button>
 		</div>
-        <div>
-            {{findInvalidControls()}}
-        </div>
 	</form>
 </div>
