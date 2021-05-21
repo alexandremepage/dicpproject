@@ -80,8 +80,8 @@ async function sendMail(reqBody, callback) {
     port: 2525,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: '9b3678c950aba1', // generated ethereal user
-      pass: '9b59f8d7a5442a', // generated ethereal password
+      user: 'ab2c4e44f4cbe3', // generated ethereal user
+      pass: 'a62ced3b87f64f', // generated ethereal password
     },
   });
 
