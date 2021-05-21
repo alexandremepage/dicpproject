@@ -5,10 +5,10 @@ Ce projet, est un formulaire permettant de faciliter l'utilisateur pour avoir de
 # Outils
 
 Le projet a été réalisé à l'aide du framework [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
-Front-End: Angular
-Base de données: MySQL
-Back-End: Node.js
-SMTP Mail: https://mailtrap.io
+1) Front-End: Angular
+2) Base de données: MySQL
+3) Back-End: Node.js
+4) SMTP Mail: https://mailtrap.io
 
 # SOMMAIRE
 
